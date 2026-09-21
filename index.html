@@ -9,28 +9,38 @@
 <body>
     <main class="form">
         <div class="fields">
-            <label for="name-input">Full Name</label>
-            <input aria-required="true" type="text" id="name-input" value="name" />
+            <div class="field">
+                <label for="name-input">Full Name</label>
+                <input aria-required="true" type="text" id="name-input" placeholder="What should we call you?" />
+            </div>
 
-            <label for="email-input">Email</label>
-            <input aria-required="true" type="email" id="email-input" value="email" />
+            <div class="field">
+                <label for="email-input">Email</label>
+                <input aria-required="true" type="email" id="email-input" placeholder="john@doe.com" />
+            </div>
 
-            <label for="password-input">Password</label>
-            <input aria-required="true" type="password" id="password-input" value="password" />
+            <div class="field">
+                <label for="password-input">Password</label>
+                <input aria-required="true" type="password" id="password-input" placeholder="xxxxxxxx" />
+            </div>
 
-            <label for="confirm-password-input">Confirm Password</label>
-            <input aria-required="true" type="password" id="confirm-password-input" />
+            <div class="field">
+                <label for="confirm-password-input">Confirm Password</label>
+                <input aria-required="true" type="password" id="confirm-password-input" placeholder="xxxxxxxx" />
+            </div>
 
-            <button type="submit">Update Profile</button>
+            <button class="submit-btn" type="submit">Update Profile</button>
         </div>
         <div class="progress-panel">
-            <h2>65%</h2>
+            <div class="circle">
+                <h2>65%</h2>
+            </div>
             <h3>Profile Completeness</h3>
             <div class="todo-list">
                 <ul>
-                    <li>Create Account</li>
-                    <li>Update Roadmap Progress</li>
-                    <li>Setup Public Profile</li>
+                    <li class="strikethrough">Create Account</li>
+                    <li class="strikethrough">Update Roadmap Progress</li>
+                    <li class="strikethrough">Setup Public Profile</li>
                     <li>Complete your first project</li>
                     <li>Invite your Friends</li>
                 </ul>
