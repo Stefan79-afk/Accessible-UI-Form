@@ -4,15 +4,16 @@
 
 body {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     margin: 0;
 }
 
 .form {
-    max-width: 70%;
+
+    margin-block: auto;
+    max-width: 90%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -41,6 +42,69 @@ body {
         border-width: 1px;
         padding: 0.25rem 1rem 0.25rem 0.25rem;
     }
+
+    input::placeholder {
+        color: #5B5757;
+    }
+
+    input:user-invalid {
+        border-color: red;
+        color: red;
+    }
+
+    input:user-invalid::placeholder {
+        color: red;
+    }
+
+    .error {
+        display: none;
+    }
+
+    input:user-invalid + .error {
+        color: red;
+        display: block;
+        margin: 0;
+    }
+
+    input:focus-visible {
+        outline: 3px solid #1a73e8;
+        outline-offset: 2px;
+    }
+
+    .password-field {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .toggle-password {
+            position: relative;
+            left: -1.5rem;
+            padding: 0;
+            border-width: 0;
+            background-color: white;
+            height: 1rem;
+
+            svg {
+                width: 1rem;
+                height: 1rem;
+                fill: black;
+            }
+        }
+    }
+}
+
+.field:nth-of-type(2) > input:invalid {
+    border-color: red;
+    color: red;
+}
+
+.field:nth-of-type(2) > input:invalid::placeholder {
+    color: red;
+}
+
+.field:nth-of-type(2) > p:first-of-type {
+    color: red;
+    margin: 0;
 }
 
 .submit-btn {
@@ -49,6 +113,16 @@ body {
     border-radius: 8px;
     border-width: 0;
     padding: 0.5rem 3rem;
+}
+
+.submit-btn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.submit-btn:focus-visible {
+    outline: 3px solid #1a73e8;
+    outline-offset: 2px;
 }
 
 .progress-panel {
@@ -64,25 +138,23 @@ body {
 }
 
 .circle {
-    border-width: 2px;
-    border-style: solid;
-    border-color: black;
+    --progress: 65%;
+    width: 5rem;
+    aspect-ratio: 1;
     border-radius: 50%;
-    height: 4rem;
-    width: 4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+    display: grid;
+    place-items: center;
+    background: 
+        radial-gradient(closest-side, white calc(100% - 6px), transparent calc(100% - 5px)),
+    conic-gradient(#8a939b 0 calc(100% - var(--progress)), black 0);
 
-    h2 {
-        margin: 0;
+    span {
+        font-weight: bold;
     }
 }
 
 .todo-list {
-    background-color: lightgray;
+    background-color: #e5e5e5;
     border-radius: 20px;
     ul {
         list-style: none;
@@ -94,5 +166,21 @@ body {
 
 .strikethrough {
     text-decoration: line-through;
-    color: grey;
+    color: #555;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 500px) {
+    .form {
+        flex-direction: column;
+        row-gap: 2rem;
+    }
 }

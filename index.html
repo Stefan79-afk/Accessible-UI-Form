@@ -7,45 +7,69 @@
     <title>Accessible UI Form</title>
 </head>
 <body>
+    <header>
+        <h1>Update your profile</h1>
+    </header>
     <main class="form">
-        <div class="fields">
+        <form class="fields">
             <div class="field">
                 <label for="name-input">Full Name</label>
-                <input aria-required="true" type="text" id="name-input" placeholder="What should we call you?" />
+                <input required type="text" name="full-name" id="name-input" placeholder="What should we call you?" autocomplete="name" />
+                <p class="error">This field is required</p>
             </div>
 
             <div class="field">
                 <label for="email-input">Email</label>
-                <input aria-required="true" type="email" id="email-input" placeholder="john@doe.com" />
+                <input required type="email" name="email" id="email-input" placeholder="john@doe.com" autocomplete="email" aria-describedby="email-error"/>
+                <p id="email-error">Email is already taken</p>
+                <p class="error">This field is required</p>
             </div>
 
             <div class="field">
                 <label for="password-input">Password</label>
-                <input aria-required="true" type="password" id="password-input" placeholder="xxxxxxxx" />
+                <div class="password-field">
+                    <input required type="password" name="password" id="password-input" placeholder="xxxxxxxx" autocomplete="new-password"/>
+                    <button type="button" class="toggle-password"
+                        aria-controls="password-input" aria-pressed="false"
+                        aria-label="Show password">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5Z"/></svg>
+                    </button>
+                </div>
+                <p class="error">This field is required</p>
             </div>
 
             <div class="field">
                 <label for="confirm-password-input">Confirm Password</label>
-                <input aria-required="true" type="password" id="confirm-password-input" placeholder="xxxxxxxx" />
+                <div class="password-field">
+                    <input required aria-required="true" type="password" name="confirm-password" id="confirm-password-input" placeholder="xxxxxxxx" autocomplete="new-password" />
+                    <button type="button" class="toggle-password"
+                        aria-controls="password-input" aria-pressed="false"
+                        aria-label="Show password">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5Z"/></svg>
+                    </button>
+                </div>
+                <p class="error">This field is required</p>
             </div>
 
             <button class="submit-btn" type="submit">Update Profile</button>
-        </div>
-        <div class="progress-panel">
-            <div class="circle">
-                <h2>65%</h2>
+        </form>
+        <section class="progress-panel">
+            <div class="circle" role="progressbar"
+                aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
+                aria-labelledby="completeness-heading">
+                <span aria-hidden="true">65%</span>
             </div>
-            <h3>Profile Completeness</h3>
+            <h2 id="completeness-heading">Profile Completeness</h2>
             <div class="todo-list">
-                <ul>
-                    <li class="strikethrough">Create Account</li>
-                    <li class="strikethrough">Update Roadmap Progress</li>
-                    <li class="strikethrough">Setup Public Profile</li>
+                <ul role="list">
+                    <li class="strikethrough"><span class="visually-hidden">Completed: </span>Create Account</li>
+                    <li class="strikethrough"><span class="visually-hidden>">Completed: </span>Update Roadmap Progress</li>
+                    <li class="strikethrough"><span class="visually-hidden">Completed: </span>Setup Public Profile</li>
                     <li>Complete your first project</li>
                     <li>Invite your Friends</li>
                 </ul>
             </div>
-        </div>
+        </section>
     </main>
 </body>
 </html>
